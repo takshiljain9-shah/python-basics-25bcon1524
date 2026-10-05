@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Takshil Jain – Profile</title>
+<style>
+/* Three colors: Ink (base), Cobalt (primary), Tangerine (accent) */
+:root{
+  --paper:#F4F6FF; --ink:#0E1330; --muted:#4B5278;
+  --cobalt:#2F4BFF; --tangerine:#E85D04;
+  --card:#FFFFFF; --line:#D5DAF5;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0E1330; --ink:#EEF0FF; --muted:#A3AAD6;
+    --cobalt:#7C8CFF; --tangerine:#FF9A4D;
+    --card:#161C45; --line:#2A3270;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0E1330; --ink:#EEF0FF; --muted:#A3AAD6;
+  --cobalt:#7C8CFF; --tangerine:#FF9A4D;
+  --card:#161C45; --line:#2A3270;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Bricolage Grotesque","Trebuchet MS",system-ui,sans-serif;
+  line-height:1.6;transition:background .3s,color .3s;
+}
+.wrap{max-width:900px;margin:0 auto;padding:0 1.5rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tangerine);outline-offset:3px}
+
+/* Nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);background:var(--paper);border-bottom:1px solid var(--line);z-index:5;transition:background .3s}
+nav{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem 0}
+nav ul{display:flex;gap:1.4rem;list-style:none;margin:0;padding:0}
+nav a{text-decoration:none;font-weight:600;color:var(--muted);padding-bottom:2px;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+nav a:hover{color:var(--cobalt);border-color:var(--tangerine)}
+#toggle{
+  font:inherit;font-weight:600;cursor:pointer;border:2px solid var(--cobalt);
+  background:transparent;color:var(--cobalt);border-radius:999px;padding:.35rem 1rem;
+  transition:background .2s,color .2s,transform .2s;
+}
+#toggle:hover{background:var(--cobalt);color:var(--paper);transform:translateY(-2px)}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1fr auto;gap:2.5rem;align-items:center;padding:4.5rem 0 3.5rem}
+.hero h1{font-size:clamp(2.6rem,8vw,5rem);line-height:1.02;margin:0 0 1rem;letter-spacing:-.03em}
+.hero h1 span{color:var(--cobalt)}
+.hero p{max-width:52ch;color:var(--muted);font-size:1.12rem;margin:0 0 1.6rem}
+.avatar{
+  width:180px;height:180px;border-radius:50%;display:grid;place-items:center;
+  font-size:3.6rem;font-weight:800;color:var(--paper);background:var(--cobalt);
+  box-shadow:12px 12px 0 var(--tangerine);transition:transform .3s,box-shadow .3s;
+}
+.avatar:hover{transform:translate(-4px,-4px) rotate(-4deg);box-shadow:18px 18px 0 var(--tangerine)}
+.btn{
+  display:inline-block;text-decoration:none;font-weight:700;padding:.7rem 1.4rem;border-radius:10px;
+  background:var(--tangerine);color:#fff;margin-right:.6rem;transition:transform .2s,box-shadow .2s;
+}
+.btn.alt{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn:hover{transform:translateY(-3px);box-shadow:0 6px 0 var(--cobalt)}
+
+/* Sections */
+section{padding:3rem 0;border-top:1px solid var(--line)}
+h2{font-size:1.8rem;margin:0 0 1.5rem;letter-spacing:-.02em}
+h2::after{content:"";display:block;width:48px;height:5px;background:var(--tangerine);margin-top:.4rem;border-radius:3px;transition:width .3s}
+section:hover h2::after{width:96px}
+
+/* Skills */
+.skills{display:grid;gap:1rem}
+.skill-top{display:flex;justify-content:space-between;font-weight:600}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;margin-top:.3rem}
+.bar i{display:block;height:100%;background:var(--cobalt);border-radius:6px;transition:background .3s}
+.skill:hover .bar i{background:var(--tangerine)}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.5rem}
+.chip{padding:.3rem .9rem;border:2px solid var(--cobalt);border-radius:999px;color:var(--cobalt);font-weight:600;transition:background .2s,color .2s,transform .2s}
+.chip:hover{background:var(--cobalt);color:var(--paper);transform:rotate(-3deg) scale(1.06)}
+
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+.project{
+  display:block;text-decoration:none;background:var(--card);border:2px solid var(--line);
+  border-left:8px solid var(--cobalt);border-radius:12px;padding:1.3rem;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+.project:hover{transform:translate(-4px,-4px);border-color:var(--tangerine);box-shadow:8px 8px 0 var(--tangerine)}
+.project h3{margin:0 0 .4rem;font-size:1.2rem}
+.project p{margin:0 0 .8rem;color:var(--muted);font-size:.97rem}
+.project b{color:var(--cobalt)}
+
+/* Contact */
+.contact a{display:inline-block;margin:0 1.2rem .6rem 0;font-weight:700;color:var(--cobalt);text-underline-offset:4px;transition:color .2s}
+.contact a:hover{color:var(--tangerine)}
+footer{padding:2rem 0;color:var(--muted);text-align:center;font-size:.9rem}
+
+@media (max-width:640px){
+  .hero{grid-template-columns:1fr;padding-top:2.5rem}
+  .avatar{width:120px;height:120px;font-size:2.4rem;order:-1}
+  nav ul{gap:.9rem;font-size:.95rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="toggle" type="button" aria-label="Switch color theme">Dark mode</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero" id="about">
+    <div>
+      <h1>Hi, I'm <span>Takshil Jain</span>.</h1>
+      <p>I'm a student at JECRC University, Jaipur. I enjoy learning new technologies and building websites and small projects. You can find my work on GitHub and connect with me on LinkedIn.</p>
+      <a class="btn" href="#projects">See my projects</a>
+      <a class="btn alt" href="#contact">Get in touch</a>
+    </div>
+    <div class="avatar" aria-hidden="true">TJ</div>
+  </div>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill"><div class="skill-top"><span>HTML &amp; CSS</span><span>90%</span></div><div class="bar"><i style="width:90%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>JavaScript</span><span>80%</span></div><div class="bar"><i style="width:80%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>Python</span><span>70%</span></div><div class="bar"><i style="width:70%"></i></div></div>
+      <div class="skill"><div class="skill-top"><span>UI design</span><span>65%</span></div><div class="bar"><i style="width:65%"></i></div></div>
+    </div>
+    <div class="chips">
+      <span class="chip">Git</span><span class="chip">React</span><span class="chip">Responsive design</span><span class="chip">SQL</span><span class="chip">Figma</span>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <a class="project" href="https://github.com/takshiljain9-shah" target="_blank" rel="noopener">
+        <h3>Weather Dashboard</h3>
+        <p>Shows a five-day forecast for any city, with a clean mobile layout.</p>
+        <b>View on GitHub</b>
+      </a>
+      <a class="project" href="https://github.com/takshiljain9-shah" target="_blank" rel="noopener">
+        <h3>Task Tracker</h3>
+        <p>A to-do app with categories, due dates and a dark mode.</p>
+        <b>View on GitHub</b>
+      </a>
+      <a class="project" href="https://github.com/takshiljain9-shah" target="_blank" rel="noopener">
+        <h3>Portfolio Site</h3>
+        <p>My personal site, built with plain HTML, CSS and JavaScript.</p>
+        <b>View on GitHub</b>
+      </a>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <a href="mailto:takshiljain.shah@gmail.com">takshiljain.shah@gmail.com</a>
+    <a href="https://github.com/takshiljain9-shah" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/takshil-jain09" target="_blank" rel="noopener">LinkedIn</a>
+  </section>
+</main>
+
+<footer>© 2026 Takshil Jain · JECRC University, Jaipur</footer>
+
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('toggle');
+  var saved=null;
+  try{saved=localStorage.getItem('theme');}catch(e){}
+  var systemDark=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var theme=saved||(systemDark?'dark':'light');
+
+  function apply(t){
+    root.setAttribute('data-theme',t);
+    btn.textContent=t==='dark'?'Light mode':'Dark mode';
+  }
+  apply(theme);
+
+  btn.addEventListener('click',function(){
+    theme=(theme==='dark')?'light':'dark';
+    apply(theme);
+    try{localStorage.setItem('theme',theme);}catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
